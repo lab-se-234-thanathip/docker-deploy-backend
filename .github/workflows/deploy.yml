@@ -71,3 +71,9 @@ jobs:
           docker-compose pull
           docker-compose up -d
           rm -rf /home/ubuntu/backend
+
+    - name: Trigger DeepSource scan
+      run: |
+        curl -X POST -H "Authorization: Bearer ${{ secrets.DEEPSOURCE_API_KEY }}" \
+        -d '{"branch": "main", "commit": "${{ github.sha }}"}' \
+        https://deepsource.io/api/v1/repos/${{ github.repository }}/analyze/

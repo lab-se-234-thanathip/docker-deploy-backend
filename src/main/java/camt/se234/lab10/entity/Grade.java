@@ -8,4 +8,3 @@ import lombok.Data;
 public class Grade {
     String grade;
     // dsafsdafsdafsadfsdafsdafa
-}
